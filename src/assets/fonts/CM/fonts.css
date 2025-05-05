@@ -1,0 +1,16 @@
+/* computer modern */
+@font-face {
+    font-family: "computer-modern";
+    src: url('./cmunbi.ttf') format('truetype');
+    font-style: oblique;
+}
+@font-face {
+    font-family: "computer-modern";
+    src: url('./cmunci.ttf') format('truetype');
+    font-style: italic;
+}
+@font-face {
+    font-family: "computer-modern";
+    src: url('./cmunrm.ttf') format('truetype');
+    font-style: normal;
+}

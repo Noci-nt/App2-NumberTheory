@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/assets/fonts/CM/fonts.css">
+    <link rel="stylesheet" href="public/styles/style.css">
+    <script src="src/scripts/source.js"></script>
+    <title>Number theory</title>
+</head>
+<body>
+    <header>
+        <h1>Number theory</h1>
+    </header>
+    <section class="app-section">
+        <div class="app-nav">
+            <button type="button" class="nav-button nav-active">Divisibility</button>
+            <button type="button" class="nav-button">in-dev</button>
+            <button type="button" class="nav-button">in-dev</button>
+        </div>
+        <div class="app-container">
+            <div class="div-app">
+                <div class="div-header">
+                    <p clas="div-header-p">
+                        Let <span class="itl">a, b ∈ ℤ</span> with <span class="itl">a ≠ 0</span>. The algorithm computes the unique integers <span class="itl">q (quotient)</span> and <span class="itl">r (remainder)</span> such that <span class="itl">b = aq + r</span>, where <span class="itl">0 ≤ r < |a|</span>.
+                    </p>
+                </div>
+                <div class="div-body">
+                    <div class="div-body-top">
+                        <input id="inputA" class="div-input" type="number" placeholder="a">
+                        <span id="symbol" class="symbol itl">|</span>
+                        <input id="inputB" class="div-input" type="number" placeholder="b">
+                        <button id="divBtnSbm" class="submit" type="button">→</button>
+                        <span id="eq" class="eq itl">b = (a)(q) + r</span>
+                    </div>
+                    <p id="expltn" class="itl"></p>
+                </div>
+                <div class="div-footer">
+                    <button id="divBtnErs" class="control-button"><img src="src/assets/icons/eraser.svg"></button>
+                    <button class="control-button"><img src="src/assets/icons/copy.svg"></button>
+                    <button class="control-button"><img src="src/assets/icons/history.svg"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
