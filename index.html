@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/assets/fonts/CM/fonts.css">
     <link rel="stylesheet" href="public/styles/style.css">
-    <script src="src/scripts/source.js"></script>
+    <script type="module" src="src/scripts/main.js"></script>
     <title>Number theory</title>
 </head>
 <body>
@@ -14,31 +14,55 @@
     </header>
     <section class="app-section">
         <div class="app-nav">
-            <button type="button" class="nav-button nav-active">Divisibility</button>
-            <button type="button" class="nav-button">in-dev</button>
-            <button type="button" class="nav-button">in-dev</button>
+            <button id="navDiv" type="button" class="nav-button nav-active" data-target="div-app">Divisibility</button>
+            <button id="navGcd" type="button" class="nav-button" data-target="gcd-app">GCD</button>
         </div>
         <div class="app-container">
-            <div class="div-app">
-                <div class="div-header">
-                    <p clas="div-header-p">
-                        Let <span class="itl">a, b ∈ ℤ</span> with <span class="itl">a ≠ 0</span>. The algorithm computes the unique integers <span class="itl">q (quotient)</span> and <span class="itl">r (remainder)</span> such that <span class="itl">b = aq + r</span>, where <span class="itl">0 ≤ r < |a|</span>.
+            <div id="div-app" class="app app-active">
+                <div class="header">
+                    <p>
+                        Let <span class="itl">a, b ∈ ℤ</span> with <span class="itl">a ≠ 0</span>. By the defition of <span class="itl">divisibility</span>, the algorithm computes the unique integers <span class="itl">q (quotient)</span> and <span class="itl">r (remainder)</span> such that <span class="itl">b = aq + r</span>, where <span class="itl">0 ≤ r < |a|</span>.
                     </p>
                 </div>
-                <div class="div-body">
-                    <div class="div-body-top">
-                        <input id="inputA" class="div-input" type="number" placeholder="a">
-                        <span id="symbol" class="symbol itl">|</span>
-                        <input id="inputB" class="div-input" type="number" placeholder="b">
-                        <button id="divBtnSbm" class="submit" type="button">→</button>
-                        <span id="eq" class="eq itl">b = (a)(q) + r</span>
+                <div class="body">
+                    <div class="body-top">
+                        <input id="divInputA" class="div-input" type="number" placeholder="a">
+                        <span id="symbol" class="text itl">|</span>
+                        <input id="divInputB" class="div-input" type="number" placeholder="b">
+                        <button id="divSbm" class="submit" type="button" data-action="submit" data-app="div-app">→</button>
+                        <span id="eq" class="text itl">b = (a)(q) + r</span>
                     </div>
                     <p id="expltn" class="itl"></p>
                 </div>
-                <div class="div-footer">
-                    <button id="divBtnErs" class="control-button"><img src="src/assets/icons/eraser.svg"></button>
-                    <button class="control-button"><img src="src/assets/icons/copy.svg"></button>
-                    <button class="control-button"><img src="src/assets/icons/history.svg"></button>
+                <div class="footer">
+                    <button class="action-button" data-action="clear" data-app="div-app"><img src="src/assets/icons/eraser.svg"></button>
+                    <button id="divCopy" class="action-button" data-action="copy" data-app="div-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
+                    <button id="divHistory" class="action-button" data-action="history" data-app="div-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
+                </div>
+            </div>
+            <div id="gcd-app" class="app">
+                <div class="header">
+                    <p>
+                        Let <span class="itl">a, b ∈ ℤ</span>, not both zero. The <span class="itl">greatest common divisor</span> of <spna class="itl">a</spna> and, <span class="itl">b</span>, denoted <span class="itl">gcd(a, b)</span>, is the largest positive integer <span class="itl">d</span> such that:
+                        <ol>
+                            <li><span class="itl">d|a</span> (<span class="itl">d</span> divides <span class="itl">a</span>) and <span class="itl">d|b</span>, and</li>
+                            <li>For any other integer <span class="itl">c</span> such that <spna class="itl">c|a</spna> and <span class="itl">c|b</span>, we have <span class="itl">c ≤ d</span>.</li>
+                        </ol>
+                    </p>
+                </div>
+                <div class="body-top">
+                    <span class="text itl">gcd(</span>
+                    <input id="gcdInputA" class="gcd-input" type="number" placeholder="a">
+                    <span class="text itl">,</span>
+                    <input id="gcdInputB" class="gcd-input" type="number" placeholder="b">
+                    <span class="text itl">)</span>
+                    <button id="gcdSbm" class="submit" type="button" data-action="submit" data-app="gcd-app">=</button>
+                    <span id="rslt" class="text itl">d</span>
+                </div>
+                <div class="footer gcd-footer">
+                    <button class="action-button" data-action="clear" data-app="gcd-app"><img src="src/assets/icons/eraser.svg"></button>
+                    <button id="gcdCopy" class="action-button" data-action="copy" data-app="gcd-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
+                    <button id="gcdHistory" class="action-button" data-action="history" data-app="gcd-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
                 </div>
             </div>
         </div>
