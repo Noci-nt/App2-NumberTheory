@@ -5,8 +5,9 @@ const symbol=document.getElementById("symbol");
 const eq=document.getElementById("eq");
 const expltn=document.getElementById("expltn");
 const divCopyBtn=document.getElementById("divCopy");
-const divHistoryBtn=document.getElementById("divHistory");
-
+const divHistoryBtn=document.getElementById("divHistoryBtn");
+const historyList=document.getElementById("hisList");
+const hisClrBtn=document.getElementById("hisClrBtn");
 
 let divA, divB, divQ, divR;
 let divRecentResult=[];
@@ -29,9 +30,7 @@ function divVerf(){                                                             
         divOutput();
         divHistory(divSave());
         divUpdateButtonState();
-        console.log(divHistoryData);
     }
-
 }
 
 function divFilter(){                                                                   //check if a, b are positives or negatives
@@ -103,12 +102,12 @@ export function divClear(){
 function divSave(){
     if(divRecentResult.length!==0){
         divRecentResult.length=0;
-    }                                                                    //compact the inputs in a single array 
+    }                                                                                   //compact the inputs in a single array 
     divRecentResult.push(divA, divB, divQ, divR);
-    return divRecentResult;
+    return [...divRecentResult];
 }
 
-function divHistory(data){                                                            //save de input array in a history array with 15 save spaces
+function divHistory(data){                                                              //save de input array in a history array with 15 save spaces
     if (divHistoryData.length>15){
         divHistoryData.shift();
     }
@@ -127,4 +126,42 @@ export function divCopy() {
     else{
         return `${divRecentResult[0]}|${divRecentResult[1]} because ${divRecentResult[1]} has the form: b=aq+r where q=${divRecentResult[2]} and r=0`;
     }
+}
+
+export function divRenderHistory(){
+    hisClrBtn.dataset.app="div-app"
+    divHistoryData.forEach((entry, index)=>{
+        const div=document.createElement('div');
+        div.className='his-entry';
+        div.innerHTML=`
+            <span class="entry-text">a=${entry[0]}, b=${entry[1]},<br>q=${entry[2]}, r=${entry[3]}</span>
+            <div class="entry-buttons">
+                <button class="action-button entry-button" data-action="entry-copy" data-index="${index}" type="button"><img src="src/assets/icons/copy.svg"></button>
+                <button class="action-button entry-button" data-action="entry-edit" data-index="${index}" type="button"><img src="src/assets/icons/edit.svg"></button>
+            </div>
+        `;
+        historyList.prepend(div);
+    });
+}
+
+export function divClearHistory(){
+    divHistoryData.length=0;
+    divUpdateButtonState();
+}
+
+export function divHistoryCopy(index) {
+    const entry=divHistoryData[index];
+    if(entry[3]!==0){
+        return `${entry[0]}∤${entry[1]} because ${entry[1]} has the form: b=aq+r where q=${entry[2]} and r=${entry[3]}≠0`;
+    }
+    else{
+        return `${entry[0]}|${entry[1]} because ${entry[1]} has the form: b=aq+r where q=${entry[2]} and r=0`;
+    }
+}
+
+export function divHistoryEdit(index){
+    const entry=divHistoryData[index];
+    divClear();
+    divInputA.value=entry[0];
+    divInputB.value=entry[1];
 }

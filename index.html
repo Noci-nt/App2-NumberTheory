@@ -5,19 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/assets/fonts/CM/fonts.css">
     <link rel="stylesheet" href="public/styles/style.css">
-    <script type="module" src="src/scripts/main.js"></script>
+    <script type="module" src="src/scripts/client.js"></script>
     <title>Number theory</title>
 </head>
 <body>
+                                        <!--  [ History ]  -->    
+    <div id="history" class="history">
+                    <div class="his-content">
+                        <div class="his-header">
+                            <h2 class="his-title">History</h3>
+                            <div id="hisButtons" class="his-buttons">
+                                <button id="hisClrBtn" class="action-button" data-action="his-clear" data-app="history" type="button" disabled><img src="src/assets/icons/trash.svg"></button>
+                                <button class="action-button" data-action="close" data-app="history" type="button"><img src="src/assets/icons/close.svg"></button>
+                            </div>
+                        </div>
+                        <div id="hisList" class="his-body">
+
+                        </div>
+                    </div>
+                </div>
     <header>
         <h1>Number theory</h1>
     </header>
+                                        <!--  [ Navigation ]  -->
     <section class="app-section">
         <div class="app-nav">
             <button id="navDiv" type="button" class="nav-button nav-active" data-target="div-app">Divisibility</button>
             <button id="navGcd" type="button" class="nav-button" data-target="gcd-app">GCD</button>
+            <button id="navLcm" type="button" class="nav-button" data-target="lcm-app">LCM</button>
+            <button id="navTst" type="button" class="nav-button" data-target="tst-app">Primality</button>
+            <button id="navFta" type="button" class="nav-button" data-target="fta-app">FTA</button>
         </div>
         <div class="app-container">
+                                        <!--  [ Div App ]  -->
             <div id="div-app" class="app app-active">
                 <div class="header">
                     <p>
@@ -37,9 +57,10 @@
                 <div class="footer">
                     <button class="action-button" data-action="clear" data-app="div-app"><img src="src/assets/icons/eraser.svg"></button>
                     <button id="divCopy" class="action-button" data-action="copy" data-app="div-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
-                    <button id="divHistory" class="action-button" data-action="history" data-app="div-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
+                    <button id="divHistoryBtn" class="action-button" data-action="history" data-app="div-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
                 </div>
             </div>
+                                        <!--  [ GCD App ]  -->
             <div id="gcd-app" class="app">
                 <div class="header">
                     <p>
@@ -63,6 +84,67 @@
                     <button class="action-button" data-action="clear" data-app="gcd-app"><img src="src/assets/icons/eraser.svg"></button>
                     <button id="gcdCopy" class="action-button" data-action="copy" data-app="gcd-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
                     <button id="gcdHistory" class="action-button" data-action="history" data-app="gcd-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
+                </div>
+            </div>
+                                         <!--  [ LCM App ]  -->            
+            <div id="lcm-app" class="app">
+                <div class="header">
+                    <p>
+                        The <span class="itl">least common multiple</span> of two integers <span class="itl">a</span> and <span class="itl">b</span> denoted <span class="itl">lcm(a,b)</span> is the smallest positive integer that is divisible by both <span class="itl">a</span> and <span class="itl">b</span>. This definition has meaning only if <span class="itl">a</span> and <span class="itl">b</span> are both different from zero.
+                    </p>
+                </div>
+                <div class="body-top">
+                    <span class="text itl">lcm(</span>
+                    <input id="lcmInputA" class="lcm-input" type="number" placeholder="a">
+                    <span class="text itl">,</span>
+                    <input id="lcmInputB" class="lcm-input" type="number" placeholder="b">
+                    <span class="text itl">)</span>
+                    <button id="lcmSbm" class="submit" type="button" data-action="submit" data-app="lcm-app">=</button>
+                    <p id="lcmRslt" class="text itl">m</p>
+                </div>
+                
+                <div class="footer lcm-footer">
+                    <button class="action-button" data-action="clear" data-app="lcm-app"><img src="src/assets/icons/eraser.svg"></button>
+                    <button id="lcmCopy" class="action-button" data-action="copy" data-app="lcm-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
+                    <button id="lcmHistory" class="action-button" data-action="history" data-app="lcm-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
+                </div>
+            </div>
+                                        <!--  [ Test App ]  -->
+            <div id="tst-app" class="app">
+                <div class="header">
+                    <p>
+                        A <span class="itl">prime number</span> is a <span class="itl">natural number</span> greater than 1 that is not a product of two <span class="itl">smaller numbers</span>. A natural number greater than 1 that is not prime is called a <span class="itl">composite number</span>.
+                    </br>
+                        A <span class="itl">primalty test</span> is algorithm for determining whether an input number is <span class="itl">prime</span>. Enter an integer greater than 1 to check whether it is prime using the <span class="itl">trial division test</span>.
+                    </p>
+                </div>
+                <div class="body-top">
+                    <input id="tstInput" class="tst-input" type="text" autocomplete="off" placeholder="n">
+                    <button id="tstSbm" class="submit" type="button" data-action="submit" data-app="tst-app">→</button>
+                    <span id="tstRslt" class="text itl">n primality</span>
+                </div>
+                <div class="footer tst-footer">
+                    <button class="action-button" data-action="clear" data-app="tst-app"><img src="src/assets/icons/eraser.svg"></button>
+                    <button id="tstCopy" class="action-button" data-action="copy" data-app="tst-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
+                    <button id="tstHistory" class="action-button" data-action="history" data-app="tst-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
+                </div>
+            </div>
+                                        <!--  [ FTA App ]  -->            
+            <div id="fta-app" class="app">
+                <div class="header">
+                    <p>
+                        The <span class="itl">Fundamental theorem of arithmetic</span> is a theorem of number theory. The theorem says that <span class="itl">every</span> positive integer greather than 1 can be written as a product of <span class="itl">prime numbers</span>. Moreover, this prime factorization is <span class="itl">unique</span>, up to the order of the factors.
+                    </p>
+                </div>
+                <div class="body-top">
+                    <input id="ftaInput" class="fta-input" type="number" placeholder="n">
+                    <button id="ftaSbm" class="submit" type="button" data-action="submit" data-app="fta-app">=</button>
+                </div>
+                <p id="ftaRslt" class="body-footer text itl"></p>
+                <div class="footer fta-footer">
+                    <button class="action-button" data-action="clear" data-app="fta-app"><img src="src/assets/icons/eraser.svg"></button>
+                    <button id="ftaCopy" class="action-button" data-action="copy" data-app="fta-app" disabled="true"><img src="src/assets/icons/copy.svg"></button>
+                    <button id="ftaHistory" class="action-button" data-action="history" data-app="fta-app" disabled="true"><img src="src/assets/icons/history.svg"></button>
                 </div>
             </div>
         </div>
